@@ -1,0 +1,10 @@
+.game-board__wrapper {
+    border: 2px solid rgba(96, 108, 214, 0.514);
+    display: flex;
+    flex-wrap: wrap;
+
+    max-width: 500px;
+    min-width: 300px;
+    min-height: 400px;
+
+}
