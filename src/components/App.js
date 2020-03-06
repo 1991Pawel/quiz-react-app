@@ -30,6 +30,7 @@ class App extends Component {
 
   render() {
 
+    console.log('work')
     return (
       <>
       <GameBoard data={items} />
