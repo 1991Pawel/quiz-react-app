@@ -1,29 +1,33 @@
 
 
-export const itemsDataId = [
-{Id:'data-id-1',isActive:false},
-{Id:'data-id-2',isActive:false},
-{Id:'data-id-3',isActive:false},
-{Id:'data-id-4',isActive:false},
-{Id:'data-id-5',isActive:false},
-{Id:'data-id-6',isActive:false},
-{Id:'data-id-7',isActive:false},
-{Id:'data-id-8',isActive:false},
-{Id:'data-id-9',isActive:false},
-{Id:'data-id-10',isActive:false},
-{Id:'data-id-11',isActive:false},
-{Id:'data-id-12',isActive:false},
-{Id:'data-id-13',isActive:false},
-{Id:'data-id-14',isActive:false},
-{Id:'data-id-15',isActive:false},
-{Id:'data-id-16',isActive:false},
-{Id:'data-id-17',isActive:false},
-{Id:'data-id-18',isActive:false},
-{Id:'data-id-19',isActive:false},
-{Id:'data-id-20',isActive:false},
-{Id:'data-id-21',isActive:false},
-{Id:'data-id-22',isActive:false},
-{Id:'data-id-23',isActive:false},
-{Id:'data-id-24',isActive:false},
-{Id:'data-id-25',isActive:false},
+const data = [
+    {
+        question: 'kto lubi jakuzzi',
+        answers: ["duddasdasdasdsadasa", "kononowicz", "masa", "frytka z baru"],
+        correct: "frytka z baru"
+    },
+    {
+        question: 'Jak ma na imie Pazura',
+        answers: ["czarek", "kononowicz", "masa", "frytka z baru"],
+        correct: "czarek"
+    },
+    {
+        question: 'kto wygra wybory',
+        answers: ["duda", "kononowicz", "masa", "frytka z baru"],
+        correct: "masa"
+    },
+    {
+        question: 'Jakies inne głupkowate pytanie',
+        answers: ["duda", "rabarbar", "masa", "frytka z baru"],
+        correct: "rabarbar"
+    },
+    {
+        question: 'kto lubi jakuzzi',
+        answers: ["duda", "kononowicz", "masa", "frytka z baru"],
+        correct: "frytka z baru"
+    }
+
 ];
+
+export { data }
+
