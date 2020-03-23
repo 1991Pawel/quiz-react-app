@@ -1,4 +1,4 @@
-# Quiz react-app with progressBar/timmer/history
+# Quiz react-app with progressBar/timer/history
 
 -I Learn how to pass props to styled-components
 
