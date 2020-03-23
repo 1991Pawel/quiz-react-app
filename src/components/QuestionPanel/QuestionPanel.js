@@ -15,6 +15,13 @@ const Timer = styled.div`
     justify-content:center;
     align-items:center;
     border-radius:50%;
+    @media screen and (max-width: 500px){
+        font-size:2rem;
+        padding:2rem;
+        height:40px;
+        width:40px;
+        font-size:2rem;
+  }
 `;
 
 const Wrapper = styled.section`
@@ -55,6 +62,9 @@ const QuestionContent = styled.h1`
     font-size:25px;
     width:100%;
     padding:20px 0;
+    @media screen and (max-width: 500px){
+        margin-top:3rem;
+  }
 `;
 const QuestionCounter = styled.div`
     font-size:25px;

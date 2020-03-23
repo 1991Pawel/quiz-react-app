@@ -60,7 +60,6 @@ class App extends Component {
     if (this.state.quizStatus) {
       this.timer = setInterval(this.tick, 1000);
     }
-
   }
 
   checkAnswer = (question) => {
