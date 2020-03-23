@@ -1,6 +1,6 @@
-## Quiz react-app with progressBar/timmer/history
+# Quiz react-app with progressBar/timmer/history
 
-# I Learn how to pass props to styled-components
+-I Learn how to pass props to styled-components
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
