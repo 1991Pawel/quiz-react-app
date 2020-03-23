@@ -1,3 +1,13 @@
+## Quiz app
+simple application with a time counter and progressbar.
+
+live:
+https://xenodochial-newton-bb1641.netlify.com
+
+# I learned:
+- how to use styled-components.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
