@@ -10,6 +10,11 @@ const Wrapper = styled.section`
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   min-width:500px;
+  @media screen and (max-width: 500px){
+    margin-top:20px;
+    min-width:320px;
+  
+  }
 `;
 
 class App extends Component {
