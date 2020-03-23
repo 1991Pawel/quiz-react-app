@@ -1,25 +1,55 @@
 import React from 'react'
 import styled from 'styled-components';
+import HistoryOfQuestion from '../../components/HistoryOfQuestion/HistoryOfQuestion';
+
 
 const Timer = styled.div`
-    font-size:2rem;
+    position:absolute;
+    padding:2.5rem;
+    font-size:2.5rem;
     color:#fff;
+    background-color: #5270C4;
+    height:60px;
+    width:60px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
 `;
 
-
 const Wrapper = styled.section`
+    position:relative;
     border:2px solid #5990C4;
     color:#004A7C;
     color:#fff;
+  
 `;
+
+
+const handleWith = width => {
+    let size = width * 10
+    return `width:${size}%`
+};
+
+const ProgressBar = styled.div`
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+   height:10px;
+   ${({ width }) => handleWith(width)};
+   background-color: #42F581;
+`;
+
 const ButtonWrapper = styled.div`
     padding:20px 0;
     background-color:#f9f9f9;
+    
 `;
 
 const DisplayWrapper = styled.div`
-background-color:#5990C4;
-padding:25px;
+    background-color:#5990C4;
+    padding:25px;
 `
 const QuestionContent = styled.h1`
     font-size:25px;
@@ -84,16 +114,18 @@ const QuestionButton = styled.button`
   }
 `;
 
-const QuestionPanel = ({ questionTime, questionNumber, currentQuestionIndex, questionBank, fn: clickQuestionHandler }) => {
-
+const QuestionPanel = (props) => {
+    const { questionTime, questionNumber, currentQuestionIndex, questionBank, fn: clickQuestionHandler } = props
     const question = questionBank[currentQuestionIndex];
     const numberQuestion = `${currentQuestionIndex + 1} / ${questionNumber}`;
-    const answers = question.answers.map((answer, index) => {
 
+
+    const answers = question.answers.map((answer, index) => {
         return (
             <QuestionButton key={index} value={answer} onClick={() => clickQuestionHandler(answer)}>
                 {answer}
             </QuestionButton>
+
         )
     })
 
@@ -102,15 +134,18 @@ const QuestionPanel = ({ questionTime, questionNumber, currentQuestionIndex, que
         <>
             <Wrapper>
                 <DisplayWrapper>
+                    <Timer>
+                        {questionTime}
+                    </Timer>
                     <QuestionContent>
                         {question.question}
                     </QuestionContent>
                     <QuestionCounter>
                         {numberQuestion}
                     </QuestionCounter>
-                    <Timer>
-                        {questionTime}
-                    </Timer>
+                    <ProgressBar width={questionTime}>
+                    </ProgressBar>
+                    <HistoryOfQuestion {...props} />
                 </DisplayWrapper>
                 <ButtonWrapper>
                     {answers}

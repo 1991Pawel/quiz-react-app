@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { data } from '../data'
-import styled from 'styled-components'
-import QuestionPanel from '../components/QuestionPanel/QuestionPanel'
+import questions from '../data';
+import styled from 'styled-components';
+import QuestionPanel from '../components/QuestionPanel/QuestionPanel';
+import ScoreBoard from '../components/ScoreBoard/ScoreBoard';
+
 
 const Wrapper = styled.section`
   margin-top:40%;
@@ -10,24 +12,50 @@ const Wrapper = styled.section`
   min-width:500px;
 `;
 
-
-
 class App extends Component {
   state = {
-    questionBank: [...data],
+    questionBank: [...questions],
     currentQuestionIndex: 0,
     score: 0,
-    questionNumber: [...data].length,
+    historyAnswers: [],
+    questionNumber: [...questions].length,
     quizStatus: true,
     questionTime: 10,
   }
 
   questionClickHandler = (question) => {
-    this.resetTimerCountDown();
+    clearInterval(this.timer);
     this.checkAnswer(question);
     this.incrementIndexHandler();
-    // odpala sie ostatni raz , chyba trzeba to jakos usunac 
-    this.interval = setInterval(() => this.setTimeCountDown(), 1000);
+    this.setState({
+      questionTime: 10,
+    })
+    if (this.state.questionNumber !== this.state.currentQuestionIndex + 1) {
+      this.timer = setInterval(this.tick, 1000);
+    }
+
+  }
+
+  tick = () => {
+    const { questionTime } = this.state
+    if (questionTime > 0) {
+      this.setState({ questionTime: this.state.questionTime - 1 })
+    } else {
+
+      clearInterval(this.timer);
+      this.timer = setInterval(this.tick, 1000);
+      this.incrementIndexHandler();
+      this.setState({
+        questionTime: 10,
+      })
+    }
+  }
+
+  componentDidMount() {
+    if (this.state.quizStatus) {
+      this.timer = setInterval(this.tick, 1000);
+    }
+
   }
 
   checkAnswer = (question) => {
@@ -36,6 +64,11 @@ class App extends Component {
     if (question === correct) {
       this.setState(prevState => ({
         score: prevState.score + 1,
+        historyAnswers: [...prevState.historyAnswers, true]
+      }));
+    } else {
+      this.setState(prevState => ({
+        historyAnswers: [...prevState.historyAnswers, false]
       }));
     }
   }
@@ -43,67 +76,56 @@ class App extends Component {
   incrementIndexHandler = () => {
     const { currentQuestionIndex, questionNumber } = this.state;
     if (currentQuestionIndex + 1 === questionNumber) {
-      this.changeQuizStatus()
+      this.checkAnswer();
+      setTimeout(() => { this.changeQuizStatus() }, 600);
+      clearInterval(this.timer);
       return
     }
-    this.setState({
-      currentQuestionIndex: this.state.currentQuestionIndex + 1,
-    })
+
+    if (this.state.questionTime === 0) {
+      this.setState(prevState => ({
+        currentQuestionIndex: prevState.currentQuestionIndex + 1,
+        historyAnswers: [...prevState.historyAnswers, false],
+      }));
+    } else {
+      this.setState(prevState => ({
+        currentQuestionIndex: prevState.currentQuestionIndex + 1,
+      }));
+    }
+
   }
 
   changeQuizStatus = () => {
     this.setState({
       quizStatus: false,
     })
-
   }
 
-
-  componentDidMount() {
-    if (this.state.quizStatus) {
-      this.interval = setInterval(() => this.setTimeCountDown(), 1000);
-    }
-  }
-
-  setTimeCountDown = () => {
-    const { questionTime } = this.state
-    if (questionTime > 0) {
-      this.setState(prevState => ({
-        questionTime: prevState.questionTime - 1,
-      }));
-    } else {
-      this.incrementIndexHandler()
-      this.resetTimerCountDown();
-    }
-  }
-
-  resetTimerCountDown = () => {
+  resetQuiz = () => {
     this.setState({
+      questionBank: [...questions],
+      currentQuestionIndex: 0,
+      score: 0,
+      historyAnswers: [],
+      questionNumber: [...questions].length,
+      quizStatus: true,
       questionTime: 10,
     })
-    clearInterval(this.interval)
+    clearInterval(this.timer);
+    this.timer = setInterval(this.tick, 1000);
   }
-
-
-
-
-
-
 
   render() {
     const items = this.state
 
-
-
     return (
       <>
         <Wrapper>
-          {this.state.quizStatus && <QuestionPanel fn={this.questionClickHandler} {...items} />}
+          {this.state.quizStatus ? <QuestionPanel fn={this.questionClickHandler} {...items} /> : <ScoreBoard props={this.state} fn={this.resetQuiz} />}
         </Wrapper >
       </>
     );
   }
-
 
 };
 

@@ -1,0 +1,2 @@
+*,:after,:before{box-sizing:border-box;margin:0;padding:0;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}html{font-size:62.5%}body{font-size:1.6rem;font-family:"Montserrat",sans-serif;background-color:#5990c4;display:flex;justify-content:center;align-items:center}.fade-enter{opacity:0;z-index:1}.fade-enter.fade-enter-active{opacity:1;transition:opacity 5s linear 5s}.fade-exit{opacity:1}.fade-exit.fade-exit-active{opacity:0;transition:opacity 5s linear}.fade-exit-done{opacity:0}
+/*# sourceMappingURL=main.5bbc7b74.chunk.css.map */

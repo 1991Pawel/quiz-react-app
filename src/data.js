@@ -1,33 +1,30 @@
-
-
-const data = [
+const questions = [
     {
-        question: 'kto lubi jakuzzi',
-        answers: ["duddasdasdasdsadasa", "kononowicz", "masa", "frytka z baru"],
-        correct: "frytka z baru"
+        question: 'What is React',
+        answers: ["JavaScript library", "HTML Framework", "CSS Framework", "SCSS Framework"],
+        correct: "JavaScript library"
     },
     {
-        question: 'Jak ma na imie Pazura',
-        answers: ["czarek", "kononowicz", "masa", "frytka z baru"],
-        correct: "czarek"
+        question: 'data type in JS is not',
+        answers: ["Null", "Boolean", "String", "isNaN(x)"],
+        correct: "isNaN(x)"
     },
     {
-        question: 'kto wygra wybory',
-        answers: ["duda", "kononowicz", "masa", "frytka z baru"],
-        correct: "masa"
+        question: 'Random Question',
+        answers: ["Good Answer", "Wrong", "Wrong", "Wrong"],
+        correct: "Good Answer"
     },
     {
-        question: 'Jakies inne głupkowate pytanie',
-        answers: ["duda", "rabarbar", "masa", "frytka z baru"],
-        correct: "rabarbar"
+        question: 'Random Question',
+        answers: ["Good Answer", "Wrong", "Wrong", "Wrong"],
+        correct: "Good Answer"
     },
     {
-        question: 'kto lubi jakuzzi',
-        answers: ["duda", "kononowicz", "masa", "frytka z baru"],
-        correct: "frytka z baru"
-    }
-
+        question: 'Random Question',
+        answers: ["Good Answer", "Wrong", "Wrong", "Wrong"],
+        correct: "Good Answer"
+    },
 ];
 
-export { data }
+export default questions
 
