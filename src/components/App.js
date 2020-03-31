@@ -81,7 +81,8 @@ class App extends Component {
     const { currentQuestionIndex, questionNumber } = this.state;
     if (currentQuestionIndex + 1 === questionNumber) {
       this.checkAnswer();
-      setTimeout(() => { this.changeQuizStatus() }, 600);
+      this.changeQuizStatus()
+      this.changeQuizStatus()
       clearInterval(this.timer);
       return
     }
